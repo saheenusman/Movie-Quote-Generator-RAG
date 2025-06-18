@@ -81,7 +81,7 @@ python -m uvicorn main:app --reload
 Simply open this file in your browser:
 
 ```text
-templates/index.html
+frontend/index.html
 ```
 
 The page will send POST requests to:
