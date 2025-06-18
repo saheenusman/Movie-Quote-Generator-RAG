@@ -6,6 +6,7 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import google.generativeai as genai
+import os  # Added to read env var
 
 # === Setup ===
 app = FastAPI()
@@ -19,7 +20,12 @@ app.add_middleware(
 )
 
 # === Load Models and Data ===
-genai.configure(api_key="AIzaSyDDaUTEWZGkEvfT46SVH_qOs_QPQJcHLsg")  # Replace securely in prod
+genai_api_key = os.getenv("GEMINI_API_KEY")
+
+if not genai_api_key:
+    raise ValueError("❌ GEMINI_API_KEY not set! Please configure it in environment variables.")
+
+genai.configure(api_key=genai_api_key)
 model_genai = genai.GenerativeModel('gemini-1.5-flash')
 model_embedding = SentenceTransformer('all-MiniLM-L6-v2')
 
