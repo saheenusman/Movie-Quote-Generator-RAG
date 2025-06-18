@@ -115,5 +115,4 @@ http://127.0.0.1:8000/ask
 ## ⭐ Credits
 
 - Dataset: [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
-- Developed by: [Saheen Usman M](https://github.com/saheenusman) ([LinkedIn](https://www.linkedin.com/in/saheenusmanm))  
-& [Abhinav K G](https://github.com/abhinavkg123) ([LinkedIn](https://www.linkedin.com/in/abhinavkg123/))
+- Developed by: [Saheen Usman M](https://github.com/saheenusman) ([LinkedIn](https://www.linkedin.com/in/saheenusmanm))  & [Abhinav K G](https://github.com/abhinavkg123) ([LinkedIn](https://www.linkedin.com/in/abhinavkg123/))
