@@ -15,15 +15,25 @@ A simple Retrieval-Augmented Generation (RAG) system that generates movie quotes
 ## 🛠️ Project Structure
 
 ```
-.
-├── clean.ipynb                 # Data cleaning
-├── data_prep.ipynb             # Preparing and formatting the dataset
-├── embeding.ipynb              # Generating embeddings and building FAISS index
-├── simple rag output.ipynb     # Testing RAG pipeline
-├── main.py                     # FastAPI backend server
-├── templates/index.html        # Frontend UI (TailwindCSS + JS)
-├── requirements.txt            # Python dependencies
-└── README.md                   # Project description
+
+├── archive/                      # Contains original dataset
+│
+├── movie-rag-app/                # App Folder
+│   ├── backend/                  # FastAPI backend + assets
+│   │   ├── main.py
+│   │   ├── quote_index.faiss
+│   │   ├── quote_embeddings.npy
+│   │   ├── quote_metadata.pkl
+│   │   ├── requirements.txt
+│   │
+│   ├── frontend/                 # HTML + Tailwind frontend
+│       ├── index.html
+│
+├── data_prep.ipynb               # Notebook - cleaning & preparing data
+├── clean.ipynb                   # Notebook - cleaning raw movie data
+├── embeding.ipynb                # Notebook - generating embeddings & FAISS index
+├── simple rag output.ipynb       # Notebook - testing RAG pipeline
+
 ```
 
 ---
