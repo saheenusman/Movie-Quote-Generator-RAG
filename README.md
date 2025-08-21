@@ -1,0 +1,118 @@
+
+# 🎬 Movie Quote Generator using RAG + FAISS
+
+A simple Retrieval-Augmented Generation (RAG) system that generates movie quotes based on user queries. The system uses **FAISS** for fast vector search, **Gemini 1.5 Flash** for LLM responses, and a lightweight **HTML + TailwindCSS** frontend served via FastAPI.
+
+---
+
+## 🗂️ Dataset
+
+- **Cornell Movie Dialogs Corpus**  
+  [https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
+
+---
+
+## 🛠️ Project Structure
+
+```
+
+├── archive/                      # Contains original dataset
+│
+├── movie-rag-app/                # App Folder
+│   ├── backend/                  # FastAPI backend + assets
+│   │   ├── main.py
+│   │   ├── quote_index.faiss
+│   │   ├── quote_embeddings.npy
+│   │   ├── quote_metadata.pkl
+│   │   ├── requirements.txt
+│   │
+│   ├── frontend/                 # HTML + Tailwind frontend
+│       ├── index.html
+│
+├── data_prep.ipynb               # Notebook - cleaning & preparing data
+├── clean.ipynb                   # Notebook - cleaning raw movie data
+├── embeding.ipynb                # Notebook - generating embeddings & FAISS index
+├── simple rag output.ipynb       # Notebook - testing RAG pipeline
+
+```
+
+---
+
+## ⚙️ How It Works
+
+### 1️⃣ Data Preparation & Embedding
+
+- Raw movie dialogs from the Cornell corpus are cleaned and parsed into individual quotes.
+- Gemini embedding model is used to generate vector representations for each quote.
+- The resulting vectors are stored in a **FAISS index** (`.faiss`, `.pkl`, `.npy` files).
+
+### 2️⃣ RAG Pipeline at Runtime
+
+- User submits a query (e.g. "love", "friendship", "betrayal") through the web UI.
+- Backend uses FAISS to retrieve top-N similar movie quotes based on vector similarity.
+- Retrieved quotes are passed as context to Gemini 1.5 Flash LLM.
+- LLM generates a final response — which may include reworded, combined, or directly retrieved quotes — and returns it to frontend.
+
+### 3️⃣ Frontend
+
+- Built with **HTML + TailwindCSS** for a simple, clean UI.
+- Calls FastAPI `/ask` endpoint with user query.
+- Displays matching movie quotes dynamically on the page.
+
+---
+
+## 📦 FAISS Index Files
+
+Since GitHub does not allow uploading large files directly in the repository,  
+the **FAISS index** files (`.pkl`, `.npy`, `.faiss`) are available under:
+
+👉 **GitHub Releases → Assets**
+
+Please download the latest release and place the files in the appropriate directory as used by `main.py`.
+
+---
+
+## 🚀 Running the Project Locally
+
+### 1️⃣ Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2️⃣ Start the FastAPI backend
+
+```bash
+python -m uvicorn main:app --reload
+```
+
+### 3️⃣ Open the Frontend
+
+Simply open this file in your browser:
+
+```text
+frontend/index.html
+```
+
+The page will send POST requests to:
+
+```text
+http://127.0.0.1:8000/ask
+```
+
+---
+
+## 🧠 Technologies Used
+
+- FAISS (Vector Search)
+- Gemini 1.5 Flash (LLM + embeddings)
+- FastAPI (API backend)
+- TailwindCSS (Frontend UI)
+- Cornell Movie Dialogs Corpus (Dataset)
+
+---
+
+## ⭐ Credits
+
+- Dataset: [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
+- Developed by: [Saheen Usman M](https://github.com/saheenusman) ([LinkedIn](https://www.linkedin.com/in/saheenusmanm))  & [Abhinav K G](https://github.com/abhinavkg123) ([LinkedIn](https://www.linkedin.com/in/abhinavkg123/))
